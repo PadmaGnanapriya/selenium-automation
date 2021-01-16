@@ -13,9 +13,9 @@ import java.util.concurrent.TimeUnit;
 
 public class MyFirstTest {
 
-    public static void main(String[] args) throws Exception{
-        System.setProperty("webdriver.chrome.driver","src/test/resources/drivers/chromedriver.exe");
-        WebDriver driver= new ChromeDriver();
+    public static void main(String[] args) throws Exception {
+        System.setProperty("webdriver.chrome.driver", "src/test/resources/drivers/chromedriver.exe");
+        WebDriver driver = new ChromeDriver();
 //        String baseUrl = "https://portal.mypearson.com/login";
         String baseUrl = "https://store.spencehub.com";
         driver.manage().window().maximize();
@@ -33,34 +33,35 @@ public class MyFirstTest {
         driver.manage().window().maximize();
         driver.manage().timeouts().implicitlyWait(10, TimeUnit.SECONDS);
 
+        int heightOfWindow;
+
+        heightOfWindow=Integer.parseInt(driver.manage().window().getSize().toString().split(",")[0].substring(1));
 //        js.executeScript("window.scrollBy(0,1500)");
-        for(int i=0;i<6000;i++) {
-            ((JavascriptExecutor) driver).executeScript("window.scrollBy(0,3)", "");
+        for (int i = 0; i < heightOfWindow/2; i++) {
+            ((JavascriptExecutor) driver).executeScript("window.scrollBy(0,4)", "");
         }
         driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
-        driver.navigate().to(baseUrl+"/checkout");
+        driver.navigate().to(baseUrl + "/checkout");
 
-//        js.executeScript("window.scrollBy(0,1500)");
-        for(int i=0;i<6000;i++) {
-            ((JavascriptExecutor) driver).executeScript("window.scrollBy(0,5)", "");
+//
+        heightOfWindow=Integer.parseInt(driver.manage().window().getSize().toString().split(",")[0].substring(1));
+        for (int i = 0; i < heightOfWindow/4; i++) {
+            ((JavascriptExecutor) driver).executeScript("window.scrollBy(0,4)", "");
         }
         driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
-        driver.navigate().to(baseUrl+"/pricing");
+        driver.navigate().to(baseUrl + "/pricing");
 
-
-//        js.executeScript("window.scrollBy(0,1500)");
-        for(int i=0;i<6000;i++) {
-            ((JavascriptExecutor) driver).executeScript("window.scrollBy(0,1)", "");
+        heightOfWindow=Integer.parseInt(driver.manage().window().getSize().toString().split(",")[0].substring(1));
+        for (int i = 0; i < heightOfWindow/4; i++) {
+            ((JavascriptExecutor) driver).executeScript("window.scrollBy(0,4)", "");
         }
         driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
-        driver.navigate().to(baseUrl+"/faq");
-
+        driver.navigate().to(baseUrl + "/faq");
 
         driver.manage().timeouts().implicitlyWait(90, TimeUnit.SECONDS);
         driver.quit();
 
     }
-
 
 
 }
